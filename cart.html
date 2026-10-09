@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart & Checkout | Food Court Queue System</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-burger"></i>
+                </div>
+                <div>Food Court <span>Queue</span></div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu</a>
+                <a href="cart.html" class="active"><i class="fa-solid fa-bag-shopping"></i> Place Order</a>
+                <a href="queue.html"><i class="fa-solid fa-users-line"></i> Queue Status</a>
+                <a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a>
+                <a href="admin.html"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge hidden">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="menu-page-header">
+        <div class="container">
+            <h1>Shopping Cart &amp; Checkout</h1>
+            <p class="text-muted" style="color: #cbd5e1; font-size: 1.05rem;">Review your selected dishes and confirm your order token</p>
+        </div>
+    </section>
+
+    <!-- Main Cart Content -->
+    <main class="container" id="cartPageSection">
+        
+        <!-- Empty Cart State -->
+        <div id="emptyCartState" class="empty-state" style="display: none; margin: 60px 0;">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+            <h2>Your Cart is Currently Empty</h2>
+            <p>You haven't added any dishes yet. Browse our tempting menu to start ordering!</p>
+            <a href="menu.html" class="btn btn-primary" style="margin-top: 10px;">
+                <i class="fa-solid fa-utensils"></i> Explore Food Menu
+            </a>
+        </div>
+
+        <!-- Cart Layout: Items & Checkout Form -->
+        <div class="cart-layout-grid" id="cartContentWrapper">
+            
+            <!-- Left Column: Cart Items List -->
+            <div>
+                <div class="cart-items-box">
+                    <div class="cart-header-row">
+                        <h3><i class="fa-solid fa-basket-shopping text-primary"></i> Order Items</h3>
+                        <button type="button" class="btn btn-sm btn-outline" id="clearCartBtn">
+                            <i class="fa-solid fa-trash-can"></i> Clear Cart
+                        </button>
+                    </div>
+
+                    <div id="cartItemsList">
+                        <!-- Populated dynamically by cart.js -->
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <a href="menu.html" class="btn btn-outline" style="border-radius: var(--radius-full);">
+                        <i class="fa-solid fa-arrow-left"></i> Add More Food Items
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: Customer Details & Order Summary -->
+            <div>
+                <!-- Customer Details Form Card -->
+                <div class="checkout-card" id="checkoutSection">
+                    <h3><i class="fa-regular fa-user text-primary"></i> Customer Information</h3>
+                    <form id="checkoutForm" novalidate>
+                        <div class="form-group">
+                            <label for="customerName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" id="customerName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                            <input type="tel" id="customerPhone" class="form-control" placeholder="e.g. 9876543210" maxlength="10" required>
+                            <small class="text-muted">Used for SMS/token pickup alerts</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerNotes" class="form-label">Cooking Instructions (Optional)</label>
+                            <input type="text" id="customerNotes" class="form-control" placeholder="e.g. Less spicy, extra sauce, double spoons">
+                        </div>
+
+                        <!-- Payment Methods Selection -->
+                        <div class="form-group">
+                            <label class="form-label">Select Payment Method <span class="text-danger">*</span></label>
+                            <div class="payment-methods-grid">
+                                <label class="payment-radio-label">
+                                    <input type="radio" name="paymentMethod" value="UPI" checked>
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span>UPI / GPay</span>
+                                </label>
+                                <label class="payment-radio-label">
+                                    <input type="radio" name="paymentMethod" value="Card">
+                                    <i class="fa-regular fa-credit-card"></i>
+                                    <span>Debit/Card</span>
+                                </label>
+                                <label class="payment-radio-label">
+                                    <input type="radio" name="paymentMethod" value="Cash">
+                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                    <span>Cash Counter</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- PhonePe UPI QR Scanner Card -->
+                        <div id="upiScannerBox" class="upi-scanner-container">
+                            <div class="upi-scanner-card">
+                                <div class="upi-scanner-header">
+                                    <div class="phonepe-brand">
+                                        <span class="phonepe-logo-icon">पे</span>
+                                        <span>PhonePe</span>
+                                    </div>
+                                    <span class="upi-accepted-tag">ACCEPTED HERE</span>
+                                </div>
+
+                                <div class="upi-qr-image-wrapper">
+                                    <img src="assets/images/upi_qr.jpg" alt="PhonePe UPI QR Scanner - Akula Praveen" class="upi-qr-img">
+                                </div>
+
+                                <div class="upi-payee-info">
+                                    <div class="payee-name">AKULA PRAVEEN</div>
+                                    <p class="payee-desc">Scan &amp; Pay using PhonePe, Google Pay, Paytm, or any UPI App</p>
+                                    <div class="upi-amount-pill">
+                                        <span>Pay Amount:</span>
+                                        <strong id="upiPayAmountDisplay">₹0</strong>
+                                    </div>
+                                </div>
+
+                                <div class="upi-utr-input-box">
+                                    <label for="upiUtrNumber">UPI Reference / UTR Number (Optional)</label>
+                                    <input type="text" id="upiUtrNumber" placeholder="e.g. 428192837192 (12 digits)" maxlength="16">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Payment Info Box -->
+                        <div id="cardPaymentBox" class="card-tip-box" style="display: none;">
+                            <i class="fa-regular fa-credit-card text-primary" style="font-size: 1.3rem;"></i>
+                            <div>
+                                <strong>Card Payment at Counter</strong>
+                                <p style="font-size: 0.8rem; margin: 0; color: #64748b;">Present your token at Counter 1 and tap/swipe your Debit or Credit Card at the POS machine.</p>
+                            </div>
+                        </div>
+
+                        <!-- Cash Payment Info Box -->
+                        <div id="cashPaymentBox" class="cash-tip-box" style="display: none;">
+                            <i class="fa-solid fa-money-bill-wave text-success" style="font-size: 1.3rem;"></i>
+                            <div>
+                                <strong>Cash Counter Payment</strong>
+                                <p style="font-size: 0.8rem; margin: 0; color: #64748b;">Pay cash directly at Counter 1 when collecting your freshly prepared food order.</p>
+                            </div>
+                        </div>
+
+                        <!-- Order Summary Box inside Checkout -->
+                        <div class="summary-card" id="cartSummaryCard" style="border: 1px dashed var(--border-color); background: var(--light-bg); margin: 24px 0 20px;">
+                            <div class="summary-row">
+                                <span>Items (<span id="summaryItemCount">0 items</span>):</span>
+                                <span id="summarySubtotal">₹0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>GST &amp; Taxes (5%):</span>
+                                <span id="summaryGst">₹0</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Grand Total:</span>
+                                <strong id="summaryTotal">₹0</strong>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" style="padding: 14px; font-size: 1.05rem;">
+                            <i class="fa-solid fa-check-to-slot"></i> Place Order &amp; Generate Token
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Order Confirmed Modal (Section 6 Requirement) -->
+    <div id="orderConfirmedModal" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 style="color: var(--status-ready);"><i class="fa-solid fa-circle-check"></i> ORDER CONFIRMED</h3>
+                <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="confirm-token-box">
+                    <div class="label">YOUR TOKEN NUMBER</div>
+                    <div class="confirm-token-badge" id="confirmedTokenNumber">#FC105</div>
+                    <div style="font-size: 0.95rem;">Please keep this token handy for pickup</div>
+                </div>
+
+                <div class="confirm-meta-grid">
+                    <div class="confirm-meta-item">
+                        <span class="label">Customer Name</span>
+                        <span class="val" id="confirmedCustomerName">Praveen</span>
+                    </div>
+                    <div class="confirm-meta-item">
+                        <span class="label">Queue Position</span>
+                        <span class="val text-primary" id="confirmedQueuePosition">#4</span>
+                    </div>
+                    <div class="confirm-meta-item">
+                        <span class="label">Est. Waiting Time</span>
+                        <span class="val" id="confirmedEstTime">20 Minutes</span>
+                    </div>
+                    <div class="confirm-meta-item">
+                        <span class="label">Initial Status</span>
+                        <span class="val text-warning" id="confirmedStatus">Waiting</span>
+                    </div>
+                </div>
+
+                <div class="confirm-items-box">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 8px;">Order Summary</h4>
+                    <ul id="confirmedItemsList" style="list-style: none;">
+                        <!-- Items rendered dynamically -->
+                    </ul>
+                    <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 8px; margin-top: 8px; font-weight: bold;">
+                        <span>Total Paid (<span id="confirmedPayment">UPI</span>):</span>
+                        <span id="confirmedTotalAmount" style="color: var(--primary);">₹0</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 16px;">
+                        <i class="fa-solid fa-circle-info"></i> Your order has been added to the Kitchen Queue (FIFO). You can track live preparation status anytime.
+                    </p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button type="button" class="btn btn-primary" id="modalViewQueueBtn">
+                            <i class="fa-solid fa-users-line"></i> Track in Queue
+                        </button>
+                        <a href="menu.html" class="btn btn-outline">
+                            <i class="fa-solid fa-plus"></i> Order More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fa-solid fa-burger"></i></div>
+                        <div style="color: #ffffff;">Food Court <span style="color: var(--primary);">Queue</span></div>
+                    </div>
+                    <p>Transparent order tokens with real-time queue position calculation and automatic LocalStorage persistence.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Food Menu</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="queue.html">Queue Board</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Management</h4>
+                    <ul class="footer-links">
+                        <li><a href="admin.html">Admin Dashboard</a></li>
+                        <li><a href="history.html">Order History</a></li>
+                        <li><a href="about.html">About System</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Payment Support</h4>
+                    <p>Accepted Modes: UPI (GPay, PhonePe, Paytm), All Major Debit/Credit Cards &amp; Cash Counter.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Food Court Queue System. All rights reserved.</div>
+                <div>Pure HTML5, CSS3, ES6 JavaScript &amp; LocalStorage</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/queue.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

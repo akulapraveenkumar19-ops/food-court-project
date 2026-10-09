@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Admin Dashboard | Food Court Queue System</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-burger"></i>
+                </div>
+                <div>Food Court <span>Queue</span></div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu</a>
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> Place Order</a>
+                <a href="queue.html"><i class="fa-solid fa-users-line"></i> Queue Status</a>
+                <a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a>
+                <a href="admin.html" class="active"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge hidden">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="menu-page-header">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div style="text-align: left;">
+                    <h1>Admin &amp; Kitchen Command Center</h1>
+                    <p class="text-muted" style="color: #cbd5e1; font-size: 1rem;">Live Order Management &amp; Queue Data Structure Controller</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" class="btn btn-sm btn-white" id="resetDemoBtn" title="Reset sample orders">
+                        <i class="fa-solid fa-rotate-left"></i> Reset Demo Orders
+                    </button>
+                    <button type="button" class="btn btn-sm btn-danger" id="clearAllOrdersBtn" title="Clear all orders">
+                        <i class="fa-solid fa-trash-can"></i> Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard Main Section -->
+    <main class="container" id="adminDashboardSection" style="padding-top: 36px; padding-bottom: 80px;">
+
+        <!-- Section 8 Requirement: Statistics Cards -->
+        <div class="admin-stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon total"><i class="fa-solid fa-receipt"></i></div>
+                <div class="stat-info">
+                    <div class="stat-val" id="statTotalOrders">0</div>
+                    <div class="stat-label">Total Orders</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon waiting"><i class="fa-solid fa-hourglass-half"></i></div>
+                <div class="stat-info">
+                    <div class="stat-val" id="statPendingOrders">0</div>
+                    <div class="stat-label">Pending (Waiting)</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon preparing"><i class="fa-solid fa-fire-burner"></i></div>
+                <div class="stat-info">
+                    <div class="stat-val" id="statPreparingOrders">0</div>
+                    <div class="stat-label">In Preparation</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon ready"><i class="fa-solid fa-bell-concierge"></i></div>
+                <div class="stat-info">
+                    <div class="stat-val" id="statReadyOrders">0</div>
+                    <div class="stat-label">Ready for Pickup</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon completed"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="stat-info">
+                    <div class="stat-val" id="statCompletedOrders">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon revenue"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                <div class="stat-info">
+                    <div class="stat-val" id="statTotalRevenue">₹0</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9 Requirement: Interactive Queue Operations & Data Structure Visualizer -->
+        <div class="queue-visualizer-card">
+            <div class="visualizer-header">
+                <div>
+                    <h3 style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-code-fork text-primary"></i> Queue Data Structure Operations (FIFO)
+                    </h3>
+                    <p class="text-muted" style="font-size: 0.85rem;">Demonstrates CS fundamental Queue operations with real-time visual memory track</p>
+                </div>
+                <div class="visualizer-badges">
+                    <span class="code-badge" id="visualizerFrontToken">Front (Head): FC101</span>
+                    <span class="code-badge" id="visualizerSizeBadge">Size: 4</span>
+                </div>
+            </div>
+
+            <!-- Queue Operations Controls -->
+            <div class="visualizer-actions-bar">
+                <button type="button" class="btn btn-sm btn-primary" id="btnQueueEnqueue">
+                    <i class="fa-solid fa-plus"></i> Queue.enqueue(Order)
+                </button>
+                <button type="button" class="btn btn-sm btn-danger" id="btnQueueDequeue">
+                    <i class="fa-solid fa-minus"></i> Queue.dequeue() (Next Order)
+                </button>
+                <button type="button" class="btn btn-sm btn-info" id="btnQueuePeek">
+                    <i class="fa-solid fa-eye"></i> Queue.peek()
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btnQueueIsEmpty">
+                    <i class="fa-solid fa-circle-question"></i> Queue.isEmpty()
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btnQueueSize">
+                    <i class="fa-solid fa-hashtag"></i> Queue.size()
+                </button>
+            </div>
+
+            <!-- Visual FIFO Memory Track -->
+            <div class="queue-track-container" id="queueVisualizerTrack">
+                <!-- Rendered dynamically by admin.js -->
+            </div>
+        </div>
+
+        <!-- Section 8 Requirement: Order Management Table -->
+        <div class="admin-table-card">
+            <div class="admin-table-toolbar">
+                <div>
+                    <h3 style="font-size: 1.25rem;"><i class="fa-solid fa-table-list text-primary"></i> Live Kitchen Orders Management</h3>
+                    <p class="text-muted" style="font-size: 0.85rem;">Manage workflow: Waiting &rarr; Preparing &rarr; Ready &rarr; Completed</p>
+                </div>
+
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <div class="search-input-box" style="min-width: 200px;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="adminOrderSearch" placeholder="Filter by Token or Name..." style="padding: 8px 14px 8px 36px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Filter Tabs -->
+            <div class="filter-tabs-wrapper" style="margin-bottom: 20px;">
+                <button class="admin-filter-tab active" data-status="All">All Orders</button>
+                <button class="admin-filter-tab" data-status="Waiting">⏳ Waiting</button>
+                <button class="admin-filter-tab" data-status="Preparing">🔥 Preparing</button>
+                <button class="admin-filter-tab" data-status="Ready">🔔 Ready for Pickup</button>
+                <button class="admin-filter-tab" data-status="Completed">✓ Completed</button>
+                <button class="admin-filter-tab" data-status="Cancelled">✕ Cancelled</button>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Customer</th>
+                            <th>Items &amp; Instructions</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrdersTableBody">
+                        <!-- Populated dynamically by admin.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fa-solid fa-burger"></i></div>
+                        <div style="color: #ffffff;">Food Court <span style="color: var(--primary);">Queue</span></div>
+                    </div>
+                    <p>Designed for fast-paced kitchen staff and food-court counters to manage orders seamlessly without paper ticket mess.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Food Menu</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="queue.html">Queue Board</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Management</h4>
+                    <ul class="footer-links">
+                        <li><a href="admin.html">Admin Dashboard</a></li>
+                        <li><a href="history.html">Order History</a></li>
+                        <li><a href="about.html">About System</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Staff Guidelines</h4>
+                    <p>Always advance tokens in sequence (FIFO). When an order is plated, immediately mark it as "Ready" to alert the customer.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Food Court Queue System. All rights reserved.</div>
+                <div>Pure HTML5, CSS3, ES6 JavaScript &amp; LocalStorage</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/queue.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

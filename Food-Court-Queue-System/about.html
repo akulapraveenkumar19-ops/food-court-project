@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact | Food Court Queue System</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-burger"></i>
+                </div>
+                <div>Food Court <span>Queue</span></div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu</a>
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> Place Order</a>
+                <a href="queue.html"><i class="fa-solid fa-users-line"></i> Queue Status</a>
+                <a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a>
+                <a href="admin.html"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                <a href="about.html" class="active"><i class="fa-solid fa-circle-info"></i> About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge hidden">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="menu-page-header">
+        <div class="container">
+            <h1>About Food Court Queue System</h1>
+            <p class="text-muted" style="color: #cbd5e1; font-size: 1.05rem;">Project Documentation, Queue Data Structure &amp; Contact Information</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 50px; padding-bottom: 80px;">
+        
+        <!-- Project Objective & Highlights Grid -->
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 36px; margin-bottom: 60px; align-items: start;">
+            
+            <!-- Left: Project Narrative -->
+            <div>
+                <span class="section-tag">Academic Project</span>
+                <h2 style="font-size: 2rem; margin-bottom: 16px;">Project Overview &amp; Purpose</h2>
+                <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 16px;">
+                    The <strong>Food Court Queue Management System</strong> is a modern web-based simulation and operations platform engineered exclusively using client-side technologies: <strong>HTML5</strong>, <strong>CSS3</strong>, and modern <strong>JavaScript (ES6+)</strong>.
+                </p>
+                <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px;">
+                    In traditional food courts and campus cafeterias, physical queues create congestion, order mix-ups, and long customer wait times. This application streamlines the entire customer flow from digital menu discovery to checkout, automated token generation, real-time queue tracking, and kitchen display updates.
+                </p>
+
+                <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="feature-box" style="padding: 20px;">
+                        <i class="fa-solid fa-check text-success" style="font-size: 1.3rem; margin-bottom: 8px;"></i>
+                        <h4 style="font-size: 1rem;">No Backend Server</h4>
+                        <p style="font-size: 0.82rem;">Runs 100% in any modern browser without Node, Python, or PHP setup.</p>
+                    </div>
+                    <div class="feature-box" style="padding: 20px;">
+                        <i class="fa-solid fa-check text-success" style="font-size: 1.3rem; margin-bottom: 8px;"></i>
+                        <h4 style="font-size: 1rem;">LocalStorage Storage</h4>
+                        <p style="font-size: 0.82rem;">Stores foodCart, orders, queue, tokenNumber, and orderHistory.</p>
+                    </div>
+                    <div class="feature-box" style="padding: 20px;">
+                        <i class="fa-solid fa-check text-success" style="font-size: 1.3rem; margin-bottom: 8px;"></i>
+                        <h4 style="font-size: 1rem;">Pure Queue DS</h4>
+                        <p style="font-size: 0.82rem;">Implements FIFO (Enqueue, Dequeue, Peek, IsEmpty, Size).</p>
+                    </div>
+                    <div class="feature-box" style="padding: 20px;">
+                        <i class="fa-solid fa-check text-success" style="font-size: 1.3rem; margin-bottom: 8px;"></i>
+                        <h4 style="font-size: 1rem;">Cross-Tab Sync</h4>
+                        <p style="font-size: 0.82rem;">Admin actions update customer queue displays in real-time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Tech Stack Card -->
+            <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm);">
+                <h3 style="font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-layer-group text-primary"></i> Technology Architecture
+                </h3>
+                
+                <ul style="display: flex; flex-direction: column; gap: 16px;">
+                    <li style="display: flex; gap: 14px; align-items: flex-start;">
+                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0; margin-bottom: 0;">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <div>
+                            <strong>HTML5 Semantic Structure</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Standard semantic tags (`<header>`, `<main>`, `<section>`, `<nav>`, `<footer>`) for accessibility and SEO.</p>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 14px; align-items: flex-start;">
+                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0; margin-bottom: 0;">
+                            <i class="fa-brands fa-css3-alt"></i>
+                        </div>
+                        <div>
+                            <strong>CSS3 Design System</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">CSS Custom Properties (Variables), Flexbox, CSS Grid, media queries, pulse animations &amp; modals.</p>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 14px; align-items: flex-start;">
+                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0; margin-bottom: 0;">
+                            <i class="fa-brands fa-square-js"></i>
+                        </div>
+                        <div>
+                            <strong>JavaScript ES6+</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">OOP Queue Class, Event Listeners, Storage events, Web Audio API sound synthesis, Form Validation.</p>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 14px; align-items: flex-start;">
+                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0; margin-bottom: 0;">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <div>
+                            <strong>Browser LocalStorage</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Client-side persistent key-value store maintaining order state across browser refreshes.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Computer Science Topic: Queue Data Structure Deep Dive -->
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-sm); margin-bottom: 60px;">
+            <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+                <span class="section-tag">Computer Science Concept</span>
+                <h2 class="section-title" style="font-size: 1.8rem;">Queue Data Structure (FIFO) Implementation</h2>
+                <p class="section-subtitle" style="margin: 0; max-width: 100%;">
+                    A Queue is a linear data structure that follows the <strong>First-In, First-Out (FIFO)</strong> principle: the first customer to place an order is the first customer whose order is prepared and served.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 24px 0;">
+                <div style="background: var(--light-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+                    <strong style="color: var(--primary); font-family: monospace; font-size: 1rem;">enqueue(item)</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">Adds a newly confirmed customer order to the rear of the queue.</p>
+                </div>
+                <div style="background: var(--light-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+                    <strong style="color: var(--status-cancelled); font-family: monospace; font-size: 1rem;">dequeue()</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">Removes and returns the customer at the front of the queue upon order completion.</p>
+                </div>
+                <div style="background: var(--light-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+                    <strong style="color: #0284c7; font-family: monospace; font-size: 1rem;">peek()</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">Inspects the front customer order without modifying or removing it from the queue.</p>
+                </div>
+                <div style="background: var(--light-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 18px;">
+                    <strong style="color: #10b981; font-family: monospace; font-size: 1rem;">isEmpty() &amp; size()</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">Checks if queue has orders and provides current count for estimated wait calculation.</p>
+                </div>
+            </div>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: var(--radius-sm); padding: 20px; font-family: monospace; font-size: 0.9rem; overflow-x: auto;">
+<span style="color: #94a3b8;">// Queue Implementation used in js/queue.js</span>
+<span style="color: #f43f5e;">class</span> <span style="color: #38bdf8;">Queue</span> {
+    <span style="color: #38bdf8;">constructor</span>(items = []) { <span style="color: #f43f5e;">this</span>.items = [...items]; }
+    <span style="color: #38bdf8;">enqueue</span>(item)  { <span style="color: #f43f5e;">this</span>.items.<span style="color: #a855f7;">push</span>(item); }
+    <span style="color: #38bdf8;">dequeue</span>()      { <span style="color: #f43f5e;">return this</span>.items.<span style="color: #a855f7;">shift</span>(); }
+    <span style="color: #38bdf8;">peek</span>()         { <span style="color: #f43f5e;">return this</span>.items[0]; }
+    <span style="color: #38bdf8;">isEmpty</span>()      { <span style="color: #f43f5e;">return this</span>.items.length === 0; }
+    <span style="color: #38bdf8;">size</span>()         { <span style="color: #f43f5e;">return this</span>.items.length; }
+}
+            </div>
+        </div>
+
+        <!-- Contact & Feedback Section -->
+        <div id="contact" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-sm);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                <div>
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Contact Food Court Support</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+                        Have feedback about our queue management or need assistance with your token? Send a message directly to our helpdesk team.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; gap: 14px; align-items: center;">
+                            <div class="feature-icon" style="width: 44px; height: 44px; margin-bottom: 0;">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <strong>Location</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Main Campus Food Court, Counter 1-4</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 14px; align-items: center;">
+                            <div class="feature-icon" style="width: 44px; height: 44px; margin-bottom: 0;">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <strong>Email Support</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">foodcourt.support@example.com</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 14px; align-items: center;">
+                            <div class="feature-icon" style="width: 44px; height: 44px; margin-bottom: 0;">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <strong>Direct Helpdesk</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">+91 98765 43210 (Toll Free)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="contactName" class="form-label">Your Name <span class="text-danger">*</span></label>
+                            <input type="text" id="contactName" class="form-control" placeholder="e.g. Aditi Sharma" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" id="contactEmail" class="form-control" placeholder="e.g. aditi@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject" class="form-label">Subject</label>
+                            <input type="text" id="contactSubject" class="form-control" placeholder="e.g. Food Quality / Token Inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">Message <span class="text-danger">*</span></label>
+                            <textarea id="contactMessage" rows="4" class="form-control" placeholder="Write your comments here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" style="padding: 12px;">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fa-solid fa-burger"></i></div>
+                        <div style="color: #ffffff;">Food Court <span style="color: var(--primary);">Queue</span></div>
+                    </div>
+                    <p>Academic Showcase Project demonstrating Queue (FIFO) data structures and LocalStorage state synchronization.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Food Menu</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="queue.html">Queue Board</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Management</h4>
+                    <ul class="footer-links">
+                        <li><a href="admin.html">Admin Dashboard</a></li>
+                        <li><a href="history.html">Order History</a></li>
+                        <li><a href="about.html">About System</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Technologies</h4>
+                    <p>HTML5, CSS3, ES6 JavaScript, Web Audio API, LocalStorage.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Food Court Queue System. All rights reserved.</div>
+                <div>Pure HTML5, CSS3, ES6 JavaScript &amp; LocalStorage</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/queue.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('contactName').value.trim();
+                    const email = document.getElementById('contactEmail').value.trim();
+                    const msg = document.getElementById('contactMessage').value.trim();
+
+                    if (!name || !email || !msg) {
+                        App.showToast('Please fill out all required fields', 'warning');
+                        return;
+                    }
+
+                    App.showToast(`Thank you, ${name}! Your message has been received.`, 'success');
+                    form.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

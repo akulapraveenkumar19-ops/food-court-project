@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History & Receipts | Food Court Queue System</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-burger"></i>
+                </div>
+                <div>Food Court <span>Queue</span></div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu</a>
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> Place Order</a>
+                <a href="queue.html"><i class="fa-solid fa-users-line"></i> Queue Status</a>
+                <a href="history.html" class="active"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a>
+                <a href="admin.html"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge hidden">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="menu-page-header">
+        <div class="container">
+            <h1>Customer Order History</h1>
+            <p class="text-muted" style="color: #cbd5e1; font-size: 1.05rem;">Search previous tokens, download bills, or re-order your favorite meals</p>
+        </div>
+    </section>
+
+    <!-- History Content Section -->
+    <main class="container" id="historyPageSection" style="padding-top: 36px; padding-bottom: 80px;">
+        
+        <!-- Search and Filter Toolbar -->
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+                <div class="search-input-box" style="flex: 1; min-width: 260px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="historySearchInput" placeholder="Search orders by Token (FC...), Name or Phone...">
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span class="text-muted" id="historyCountDisplay" style="font-size: 0.9rem; font-weight: 600;">0 Orders Recorded</span>
+                    <button type="button" class="btn btn-sm btn-outline text-danger" id="clearHistoryBtn" title="Clear history">
+                        <i class="fa-solid fa-trash-can"></i> Clear History
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Status Buttons -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="admin-filter-tab history-filter-btn active" data-status="all">All Orders</button>
+                <button class="admin-filter-tab history-filter-btn" data-status="completed">✓ Completed</button>
+                <button class="admin-filter-tab history-filter-btn" data-status="ready">🔔 Ready</button>
+                <button class="admin-filter-tab history-filter-btn" data-status="preparing">🔥 Preparing</button>
+                <button class="admin-filter-tab history-filter-btn" data-status="waiting">⏳ Waiting</button>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyHistoryState" class="empty-state" style="display: none;">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <h3>No Orders Found</h3>
+            <p>No orders match your search or filter criteria in LocalStorage.</p>
+            <a href="menu.html" class="btn btn-primary" style="margin-top: 10px;">
+                <i class="fa-solid fa-utensils"></i> Place an Order Now
+            </a>
+        </div>
+
+        <!-- Order History Cards Grid -->
+        <div class="history-cards-grid" id="historyListContainer">
+            <!-- Populated dynamically by HistoryController in app.js -->
+        </div>
+
+    </main>
+
+    <!-- Printable Thermal Receipt Modal -->
+    <div id="receiptModal" class="modal-overlay">
+        <div class="modal-dialog" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-receipt text-primary"></i> Digital Bill Receipt</h3>
+                <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body" style="background: #f8fafc; padding: 20px;">
+                <div id="receiptModalContent">
+                    <!-- Populated dynamically by HistoryController -->
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button type="button" class="btn btn-outline" data-modal-close>Close</button>
+                <button type="button" class="btn btn-primary" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> Print Receipt
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fa-solid fa-burger"></i></div>
+                        <div style="color: #ffffff;">Food Court <span style="color: var(--primary);">Queue</span></div>
+                    </div>
+                    <p>Your complete food court transaction history stored locally on your device for instant offline access.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Food Menu</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="queue.html">Queue Board</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Management</h4>
+                    <ul class="footer-links">
+                        <li><a href="admin.html">Admin Dashboard</a></li>
+                        <li><a href="history.html">Order History</a></li>
+                        <li><a href="about.html">About System</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Persistence</h4>
+                    <p>All token transactions are synchronized directly with your browser's LocalStorage engine.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Food Court Queue System. All rights reserved.</div>
+                <div>Pure HTML5, CSS3, ES6 JavaScript &amp; LocalStorage</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/queue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Food Court Queue System | Fast & Seamless Ordering</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-burger"></i>
+                </div>
+                <div>Food Court <span>Queue</span></div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu</a>
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> Place Order</a>
+                <a href="queue.html"><i class="fa-solid fa-users-line"></i> Queue Status</a>
+                <a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a>
+                <a href="admin.html"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge hidden">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-bolt"></i> Real-time FIFO Queue Management
+                </div>
+                <h1 class="hero-title">Smart Food Court <span>Queue System</span></h1>
+                <p class="hero-subtitle">Order your favorite food, get your token, and track your order easily without waiting in crowded lines.</p>
+                <div class="hero-cta-group">
+                    <a href="menu.html" class="btn btn-primary">
+                        <i class="fa-solid fa-utensils"></i> Order Now
+                    </a>
+                    <a href="queue.html" class="btn btn-white">
+                        <i class="fa-solid fa-users-line"></i> Check Queue
+                    </a>
+                </div>
+                <div class="hero-stats-row">
+                    <div class="hero-stat-item">
+                        <h4>&lt; 10 Mins</h4>
+                        <p>Average Prep Time</p>
+                    </div>
+                    <div class="hero-stat-item">
+                        <h4>100%</h4>
+                        <p>Real-Time Tracking</p>
+                    </div>
+                    <div class="hero-stat-item">
+                        <h4>FIFO</h4>
+                        <p>Fair Queue Priority</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Live Preview Visual Card -->
+            <div class="hero-visual">
+                <div class="hero-card-preview">
+                    <div class="hero-token-spotlight">
+                        <div class="label"><i class="fa-solid fa-bullhorn"></i> NOW SERVING</div>
+                        <div class="token-no" id="heroLiveToken">FC101</div>
+                        <div class="token-customer"><i class="fa-solid fa-user"></i> Rahul Sharma &bull; Counter 1</div>
+                    </div>
+                    <div class="hero-preview-queue">
+                        <div class="hero-queue-row">
+                            <span><strong class="text-warning">#FC102</strong> Priya Patel (Pizza)</span>
+                            <span class="status-badge status-preparing">Preparing</span>
+                        </div>
+                        <div class="hero-queue-row">
+                            <span><strong class="text-warning">#FC103</strong> Arjun Verma (Dosa)</span>
+                            <span class="status-badge status-waiting">Waiting</span>
+                        </div>
+                        <div class="hero-queue-row">
+                            <span><strong class="text-warning">#FC104</strong> Neha Reddy (Biryani)</span>
+                            <span class="status-badge status-waiting">Waiting</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 18px; text-align: center;">
+                        <a href="queue.html" class="btn btn-sm btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.3);">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Display Board
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section (4 Steps) -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Smooth Process</span>
+                <h2 class="section-title">How The Smart Queue Works</h2>
+                <p class="section-subtitle">Experience contactless food ordering from selection to tray pickup with four simple steps.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <div class="step-card-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Explore Menu</h3>
+                    <p>Browse appetizing dishes across 8 food categories with prices, veg/non-veg tags, and descriptions.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <div class="step-card-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h3>Add to Cart & Order</h3>
+                    <p>Customize quantities, provide your name and phone number, and choose your preferred payment mode.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <div class="step-card-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <h3>Receive Token</h3>
+                    <p>Get a unique auto-generated token (e.g. #FC105) with your estimated waiting time and queue position.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <div class="step-card-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+                    <h3>Pick Up Meal</h3>
+                    <p>Track your status live on the screen. When your token turns "Ready", collect your meal at the counter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Items Showcase -->
+    <section class="features-section" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Chef's Recommendations</span>
+                <h2 class="section-title">Popular Food Court Specials</h2>
+                <p class="section-subtitle">Customer favorites crafted fresh upon every order.</p>
+            </div>
+
+            <div class="food-cards-grid" id="homeFeaturedGrid">
+                <!-- Dynamically populated or curated cards -->
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="btn btn-primary" style="padding: 12px 32px; font-size: 1rem;">
+                    <i class="fa-solid fa-utensils"></i> View Full Menu (20+ Items)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Smart Queue System -->
+    <section class="features-section" style="background-color: var(--light-bg);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Key Advantages</span>
+                <h2 class="section-title">Why Food Courts Love Our System</h2>
+                <p class="section-subtitle">Designed to eliminate crowding, reduce order errors, and streamline kitchen workflow.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h3>Zero Waiting Confusion</h3>
+                    <p>Customers can sit comfortably while tracking their exact queue position and estimated preparation time.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>FIFO Queue Structure</h3>
+                    <p>Utilizes computer science First-In-First-Out (FIFO) queue principles so every customer is served fairly.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-kitchen-set"></i></div>
+                    <h3>Admin Kitchen Display</h3>
+                    <p>Kitchen staff can switch order status from Waiting to Preparing and Ready with a single click.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Zero Backend Needed</h3>
+                    <p>Runs entirely inside the browser using modern HTML5, CSS3, ES6 JavaScript, and LocalStorage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fa-solid fa-burger"></i></div>
+                        <div style="color: #ffffff;">Food Court <span style="color: var(--primary);">Queue</span></div>
+                    </div>
+                    <p>A smart, browser-based Queue Management System designed to eliminate ordering bottlenecks and bring order to food courts.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Food Menu</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="queue.html">Queue Board</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Management</h4>
+                    <ul class="footer-links">
+                        <li><a href="admin.html">Admin Dashboard</a></li>
+                        <li><a href="history.html">Order History</a></li>
+                        <li><a href="about.html">About System</a></li>
+                        <li><a href="about.html#contact">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Project Info</h4>
+                    <p><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript (ES6+), LocalStorage.</p>
+                    <p style="margin-top: 10px;"><strong>Data Structure:</strong> Queue (FIFO Class).</p>
+                    <p style="margin-top: 10px; color: #10b981;"><i class="fa-solid fa-circle-check"></i> 100% Offline Capable</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Food Court Queue System. All rights reserved.</div>
+                <div>Created with HTML5, CSS3 &amp; Vanilla JavaScript</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Core Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/queue.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Home Page Inline Script for Featured Items -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const featuredGrid = document.getElementById('homeFeaturedGrid');
+            if (featuredGrid) {
+                const catalog = StorageManager.getCatalog();
+                // Select 4 showcase items
+                const showcaseIds = ['b1', 'p1', 's1', 'n1'];
+                const showcaseItems = catalog.filter(item => showcaseIds.includes(item.id));
+
+                featuredGrid.innerHTML = showcaseItems.map(item => `
+                    <div class="food-card" data-id="${item.id}">
+                        <div class="food-card-img-wrapper">
+                            <img src="${item.image}" alt="${item.name}" loading="lazy">
+                            <span class="diet-tag ${item.isVeg ? 'veg' : 'non-veg'}">
+                                <span class="diet-dot"></span>
+                            </span>
+                            <span class="category-tag">${item.category}</span>
+                        </div>
+                        <div class="food-card-content">
+                            <div class="food-header">
+                                <h3 class="food-title">${item.name}</h3>
+                                <span class="food-price">₹${item.price}</span>
+                            </div>
+                            <p class="food-desc">${item.description}</p>
+                            <div class="food-meta">
+                                <span class="prep-pill"><i class="fa-regular fa-clock"></i> ~${item.prepTime} mins</span>
+                                <span class="stock-pill in-stock"><i class="fa-solid fa-check"></i> Available</span>
+                            </div>
+                            <div class="food-card-actions">
+                                <button class="btn btn-primary add-to-cart-btn" onclick="addFeaturedToCart('${item.id}')">
+                                    <i class="fa-solid fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Sync hero now serving token from live orders
+            const orders = StorageManager.getOrders();
+            const readyOrder = orders.find(o => o.status === 'Ready') || orders[0];
+            const heroLiveToken = document.getElementById('heroLiveToken');
+            if (heroLiveToken && readyOrder) {
+                heroLiveToken.textContent = readyOrder.token;
+            }
+        });
+
+        function addFeaturedToCart(itemId) {
+            const item = StorageManager.getItemById(itemId);
+            if (item) {
+                StorageManager.addToCart(item, 1);
+                App.showToast(`✓ Added "${item.name}" to cart!`, 'success');
+            }
+        }
+    </script>
+</body>
+</html>
